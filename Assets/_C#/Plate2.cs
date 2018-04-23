@@ -6,39 +6,33 @@ using UnityEngine.UI;
 public class Plate2 : MonoBehaviour {
 	
 	[Header ("Set in Inspector")]
-	public GameObject panTrig;
+	//public GameObject panTrig;
 
 	public float speed = 1f;
-	public float leftAndRightEdge = 30f;
+	public float rightEdge = 30f;
+    public float leftEdge = 30f;
 	public float chanceToChangeDirections = 0.05f;
-	public float collMover = 1f;
+	//public float collMover = 1f;
 
-	Collider pancakeColl;
-	Collider myCollider;
-	private GameObject	cylinder;
-	private GameObject pancake;
-	private Pancake pancakeScript;
-	private Rigidbody pancakeBod;
-	private GameObject lastPancake;
-	private GameObject plate;
-	private float plateHeight;
-	private float pancakeHeight;
-	//private bool firstTime = true;
-	//Collider capColl;
-	//FixedJoint joint;
+    private GameObject plate;
 
-	[Header("Set Dynamically")]
-    public Text scoreGT;
-    static public int lowScore = 0;
+    //Collider pancakeColl;
+    //Collider myCollider;
+    //private GameObject	cylinder;
+    //private GameObject pancake;
+    //private Pancake pancakeScript;
+    //private Rigidbody pancakeBod;
+    //public GameObject lastPancake;
 
+    //private float plateHeight;
+    //private float pancakeHeight;
+    //private bool firstTime = true;
+    //Collider capColl;
+    //FixedJoint joint;
 
-	void Start () {
-
-	plate = this.gameObject;
-	GameObject scoreGO = GameObject.Find("ScoreCounter");
-    scoreGT = scoreGO.GetComponent<Text>();
-    scoreGT.text = "0";
-        
+    void Start ()
+    {
+	plate = this.gameObject;    
     }
 
 	void Update ()
@@ -49,21 +43,22 @@ public class Plate2 : MonoBehaviour {
 		transform.position = pos;
 
 		//changing direction
-		if (pos.x < -leftAndRightEdge) {
+		if (pos.x < -leftEdge) {
 			speed = Mathf.Abs (speed);
-		} else if (pos.x > leftAndRightEdge) {
+		} else if (pos.x > rightEdge) {
 			speed = -Mathf.Abs (speed);
 		}
-		if ((cylinder != null) && (lastPancake != null)) {
+		/*if ((cylinder != null) && (lastPancake != null)) {
 			if (cylinder.transform.position.y >= lastPancake.transform.position.y) { 
 				panTrig.transform.position = new Vector3 (cylinder.transform.position.x, cylinder.transform.position.y + collMover, cylinder.transform.position.z);
 			}
 		} else {
 				panTrig.transform.position = new Vector3 (plate.transform.position.x, plate.transform.position.y + collMover, plate.transform.position.z);
-		}
-	}
+		}*/
+ 
+    }
 
-	void OnTriggerEnter (Collider other)
+	/*void OnTriggerEnter (Collider other)
 	{ 
 		if ((other.gameObject.tag == "Cylinder") && (other.gameObject.transform.parent != this.gameObject)) {
 
@@ -78,13 +73,13 @@ public class Plate2 : MonoBehaviour {
 			cylinder.transform.rotation = Quaternion.Euler (0, 0, 0);
 			//pancakeBod.isKinematic = true;
 			pancake.transform.parent = this.transform;
-			Invoke ("endPancake", 3);
+			Invoke ("endPancake", 1);
 			//pancake = null;
 			//lastPancake = cylinder;
 
 		}
-	}
-	void endPancake ()
+	}*/
+	/*void endPancake ()
 	{
 		if (pancake != null) {
 			pancakeBod = pancake.GetComponentInChildren<Rigidbody> ();
@@ -107,6 +102,6 @@ public class Plate2 : MonoBehaviour {
 		if (Random.value < chanceToChangeDirections) {
 			speed *= -1;
 		}
-		scoreGT.text = lowScore.ToString();
-}
+		
+    }*/
 }

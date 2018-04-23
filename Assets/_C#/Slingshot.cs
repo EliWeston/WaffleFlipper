@@ -75,11 +75,22 @@ public class Slingshot : MonoBehaviour {
 		float maxMagnitude = this.GetComponent<SphereCollider> ().radius;
 		if (mouseDelta.magnitude > maxMagnitude) {
 			mouseDelta.Normalize ();
-			mouseDelta *= maxMagnitude;
+			mouseDelta *= maxMagnitude;  
 		}
-		Vector3 projPos = launchPos + mouseDelta;
+        if (mouseDelta.x >= 0)
+        {
+            mouseDelta.Normalize();
+        }
+        //print(mouseDelta);
+
+        Vector3 projPos = launchPos + mouseDelta;
 		pancake.transform.position = projPos;
 		Spatula.transform.position = projPos;
+
+        if (projPos.x > -14.7f)
+        {
+            projPos.x = -14.7f;
+        }
 
 		if (Input.GetMouseButtonUp (0)) {
 			aimingMode = false;

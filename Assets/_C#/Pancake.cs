@@ -8,25 +8,27 @@ public class Pancake : MonoBehaviour {
 	public bool isFlying = false;
 	public bool isStable = false;
 
-	Collider pancakeColl;
-	Collider myCollider;
-	private GameObject cylinder;
-	private GameObject	pancake;
-	private Pancake pancakeScript;
-	public float panHeight;
+	//Collider pancakeColl;
+	//Collider myCollider;
+	//private GameObject cylinder;
+	//private GameObject	pancake;
+	//private Pancake pancakeScript;
+	//public float panHeight;
 
 	[Header("Set in Inspector")]
 	public GameObject plate;
-	public GameObject cylChild;
+    public GameObject cylChild;
+
+    [Header("Set Dynamically")]
 	public Rigidbody  cylBod;
  
 	void Start () {
-	cylBod = cylChild.GetComponent<Rigidbody>();
+	    cylBod = cylChild.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
-	{  
+	{
 		if (isFlying == true) {
 			
 			cylChild.transform.Rotate (0, 0, -24 * rotationsPerMinute * Time.deltaTime, 0);
@@ -35,10 +37,12 @@ public class Pancake : MonoBehaviour {
 			if (cylChild.transform.position.y < 8) {
 				cylBod.isKinematic = false;
 			}
-		}	
-}
-	void OnCollision (){
-		isFlying = false;
-	
-}
+		}
+    }
+    /*void OnTriggerEnter (Collider other){
+        if ((other.gameObject.tag != "Spatula") && (isFlying != false))
+        {
+            isFlying = false;
+        }
+    }*/
 }

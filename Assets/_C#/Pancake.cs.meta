@@ -5,7 +5,9 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cylBod: {instanceID: 0}
+  - plate: {fileID: 1792735939878676, guid: ee09e91404bd2e642a59627d118c5141, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
